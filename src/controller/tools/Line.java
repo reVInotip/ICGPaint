@@ -7,7 +7,7 @@ import event.events.DrawTempLineEvent;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
-@ToolView(name = "Line")
+@ToolView(name = "Line", descr = "Линия (между двумя последними кликами)", icon = "/tools/line.png")
 public class Line extends Tool {
     Point start = new Point(0, 0);
     int countClicks = 0;

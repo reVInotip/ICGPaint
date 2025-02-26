@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ToolsManager {
     private final HashMap<String, Tool> tools;
@@ -69,6 +70,14 @@ public class ToolsManager {
 
     public MouseAdapter getToolsAdapter() {
         return toolsAdapter;
+    }
+
+    public Map<String, String> getToolsDescription() {
+        return ToolsFactory.toolsDescr;
+    }
+
+    public Map<String, String> getToolsIcons() {
+        return ToolsFactory.toolsIcons;
     }
 
     public List<String> getAvailableTools() {

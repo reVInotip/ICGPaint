@@ -9,6 +9,8 @@ import java.util.*;
 
 class ToolsFactory {
     static private final Map<String, Class<Tool>> toolClasses = new HashMap<>();
+    static final Map<String, String> toolsDescr = new HashMap<>();
+    static final Map<String, String> toolsIcons = new HashMap<>();
     static private final String RESOURCE_FILE_NAME = "./tools.conf";
 
     static public void initFactory() {
@@ -20,11 +22,19 @@ class ToolsFactory {
             BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
             for (String classPath; (classPath = reader.readLine()) != null; ) {
                 Class<?> tool = Class.forName(classPath);
-                if (tool.getSuperclass().getName().equals(Tool.class.getName())) {
+                if (tool.getSuperclass().getName().equals(Tool.class.getName()) && tool.isAnnotationPresent(ToolView.class)) {
                     toolClasses.put(tool.getAnnotation(ToolView.class).name(), (Class<Tool>) tool);
+                    if (!tool.getAnnotation(ToolView.class).descr().isEmpty()) {
+                        toolsDescr.put(tool.getAnnotation(ToolView.class).name(), tool.getAnnotation(ToolView.class).descr());
+                    }
+
+                    if (!tool.getAnnotation(ToolView.class).icon().isEmpty()) {
+                        toolsIcons.put(tool.getAnnotation(ToolView.class).name(), tool.getAnnotation(ToolView.class).icon());
+                    }
                 }
             }
         } catch (IOException | ClassNotFoundException | ClassCastException e) {
+            System.err.println(e.getMessage());
             throw new RuntimeException(e);
         }
     }

@@ -6,4 +6,6 @@ import java.lang.annotation.RetentionPolicy;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ToolView {
     String name();
+    String descr() default "";
+    String icon() default "";
 }

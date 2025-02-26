@@ -27,9 +27,10 @@ public class ICGPaint {
     }
 
     private void createToolsButtons() {
-        mainFrame.addToolsButtons(toolManager.getAvailableTools().toArray(new String[0]));
+        mainFrame.addToolsButtons(toolManager.getAvailableTools().toArray(new String[0]),
+                toolManager.getToolsDescription(), toolManager.getToolsIcons());
         for (String tool: toolManager.getAvailableTools()) {
-            mainFrame.addButtonActionListener(tool, actionEvent -> toolManager.switchTool(tool));
+            mainFrame.addToolActionListener(tool, actionEvent -> toolManager.switchTool(tool));
         }
     }
 }

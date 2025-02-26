@@ -5,7 +5,7 @@ import event.events.DrawLineEvent;
 
 import java.awt.event.MouseEvent;
 
-@ToolView(name = "Pencil")
+@ToolView(name = "Pencil", descr = "Карандаш", icon = "/tools/pencil.png")
 public class Pencil extends Tool {
     private int x = 0, y = 0;
     private boolean drawing = false;
