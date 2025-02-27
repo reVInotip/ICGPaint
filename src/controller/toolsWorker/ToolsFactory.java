@@ -11,7 +11,7 @@ class ToolsFactory {
     static private final Map<String, Class<Tool>> toolClasses = new HashMap<>();
     static final Map<String, String> toolsDescr = new HashMap<>();
     static final Map<String, String> toolsIcons = new HashMap<>();
-    static private final String RESOURCE_FILE_NAME = "./tools.conf";
+    static private final String RESOURCE_FILE_NAME = "/tools.conf";
 
     static public void initFactory() {
         try(InputStream stream = ToolsFactory.class.getResourceAsStream(RESOURCE_FILE_NAME)) {

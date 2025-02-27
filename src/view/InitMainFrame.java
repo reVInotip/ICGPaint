@@ -42,7 +42,6 @@ public class InitMainFrame extends MainFrame {
         } catch (Exception e) {
             java.lang.System.err.println("Can not add description for About menu item: " + e.getMessage());
         }
-        java.lang.System.out.println(descr);
 
         addMenu("Help");
         String finalDescr = descr;
